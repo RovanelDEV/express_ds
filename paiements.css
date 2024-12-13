@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Favicon styling */
+link[rel="shortcut icon"] {
+    border-radius: 50%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: red;
+    color: white;
+}
+
+.header {
+    background: hsl(0, 100%, 40%);
+    padding: 0.75rem;
+    box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    color: hsl(0, 0%, 100%);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+}
+
+.logo {
+    height: 32px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.logo-text {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Main content spacing */
+.main-content {
+    margin-top: 60px;
+    padding: 1rem;
+    background-color: hsl(0, 100%, 40%);
+}
+
+/* Pro section styles */
+.pro {
+    background-color: hsl(56, 100%, 20%);
+    color: black;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 4rem; /* Added space before footer */
+}
+
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.pro h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    color: hsl(0, 0, 100%);
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.pro h2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    opacity: 0.8;
+    letter-spacing: 0.01em;
+}
+
+.pro h2 span {
+    display: block;
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    opacity: 1;
+    letter-spacing: 0.02em;
+}
+
+.pro .payment-logo {
+    width: 120px;
+    height: auto;
+    margin: 1.5rem auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.product-summary {
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.product-summary h2,
+.product-summary p {
+    color: white;
+}
+
+#product-name,
+#product-price {
+    color: white;
+}
+
+/* Footer styles */
+.footer {
+    background-color: hsl(0, 100%, 40%);
+    color: hsl(0, 0%, 100%);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    margin-top: auto; /* Push footer to bottom */
+}
+
+.footer p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo {
+    width: 80px;
+    height: auto;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+/* Tablet and larger */
+@media (min-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+
+    .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .nav-button {
+        font-size: 1.5rem;
+    }
+
+    .logo {
+        height: 40px;
+        border-radius: 8px;
+    }
+
+    .main-content {
+        margin-top: 80px;
+    }
+
+    .container {
+        max-width: 600px;
+    }
+
+    .pro h1 {
+        font-size: 2.5rem;
+    }
+
+    .pro h2 {
+        font-size: 1.25rem;
+    }
+
+    .pro h2 span {
+        font-size: 1.75rem;
+        margin-top: 2rem;
+    }
+
+    .pro .payment-logo {
+        width: 150px;
+    }
+
+    .footer-logo {
+        width: 100px;
+    }
+
+    /* Customization du footer */
+    .footer p {
+        font-size: 1rem;
+    }
+}
