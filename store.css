@@ -204,6 +204,7 @@ body {
     font-weight: 500;
     min-width: 30px;
     text-align: center;
+    color: hsl(0, 100%, 35%)   
 }
 
 .product-modal {
