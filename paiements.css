@@ -16,8 +16,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: red;
     color: white;
+    background-color: hsl(0, 100%, 40%);
 }
 
 .header {
@@ -90,6 +90,7 @@ body {
     font-weight: 600;
     letter-spacing: -0.02em;
     color: white;
+    background-color: hsl(0, 100%, 40%);
 }
 
 h1 {
@@ -134,7 +135,8 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: color: hsl(0, 0%, 90%);
+    color: hsl(0, 0%, 90%);
+    background: hsl(0, 100%, 40%);
 }
 
 .product-summary h2,
