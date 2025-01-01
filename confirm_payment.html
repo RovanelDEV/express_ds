@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation de Paiement - Express DS</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="paiements.css">
     <link rel="shortcut icon" href="./logo.jfif" type="image/x-icon">
     <style>
@@ -15,12 +17,14 @@
             padding: 30px;
             background: white;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1),
-                        0 1px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1),
+                0 1px 8px rgba(0, 0, 0, 0.06);
         }
+
         .form-group {
             margin-bottom: 24px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
@@ -32,6 +36,7 @@
             box-shadow: inset 0 3px 3px hsl(0, 0%, 20%);
             background-color: hsl(0, 0%, 85%)
         }
+
         .form-group input[type="text"],
         .form-group input[type="tel"] {
             width: 100%;
@@ -41,12 +46,14 @@
             font-size: 16px;
             transition: all 0.3s ease;
         }
+
         .form-group input[type="text"]:focus,
         .form-group input[type="tel"]:focus {
             border-color: hsl(0, 100%, 40%);
             outline: none;
             box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.1);
         }
+
         .checkbox-group {
             margin-top: 20px;
             padding: 15px;
@@ -54,6 +61,7 @@
             background: #f8f8f8;
             border: 2px solid #eee;
         }
+
         .checkbox-group label {
             display: flex;
             align-items: center;
@@ -62,15 +70,17 @@
             color: hsl(0, 100%, 40%);
             font-weight: 500;
         }
+
         .checkbox-group input[type="checkbox"] {
             width: 20px;
             height: 20px;
             cursor: pointer;
             accent-color: hsl(0, 100%, 40%);
         }
+
         .submit-btn {
             background-color: #cccccc;
-            color:black;
+            color: black;
             padding: 15px 24px;
             border: none;
             border-radius: 8px;
@@ -81,16 +91,19 @@
             margin-top: 20px;
             transition: all 0.3s ease;
         }
+
         .submit-btn.active {
             background-color: hsl(0, 100%, 40%);
             cursor: pointer;
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
         }
+
         .submit-btn.active:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(255, 0, 0, 0.25);
         }
+
         .product-summary-box {
             background: #f8f8f8;
             border-radius: 8px;
@@ -98,6 +111,7 @@
             margin-bottom: 30px;
             border: 2px solid #eee;
         }
+
         .product-summary-box h2 {
             color: red !important;
             margin: 0 0 10px 0;
@@ -108,6 +122,7 @@
         .product-summary-box p {
             color: red !important;
         }
+
         .product-summary-box .price {
             color: red !important;
             font-size: 1.4em;
@@ -116,6 +131,7 @@
         }
     </style>
 </head>
+
 <body>
     <header class="header">
         <div class="header-content">
@@ -132,7 +148,7 @@
                 <h2 id="product-name">Chargement...</h2>
                 <p class="price" id="product-price">Chargement...</p>
             </div>
-            
+
             <h1 style="color: #333; margin-bottom: 30px;">Confirmation de Paiement</h1>
             <form id="paymentForm" onsubmit="return validateForm(event)">
                 <div class="form-group">
@@ -167,10 +183,10 @@
 
     <script>
         // Load product details from session storage
-        window.onload = function() {
+        window.onload = function () {
             const productName = sessionStorage.getItem('productName') || 'Produit';
             const price = sessionStorage.getItem('price') || '0';
-            
+
             document.getElementById('product-name').textContent = productName;
             document.getElementById('product-price').textContent = price + ' FCFA';
         }
@@ -179,7 +195,7 @@
         const depositConfirm = document.getElementById('depositConfirm');
         const submitBtn = document.getElementById('submitBtn');
 
-        depositConfirm.addEventListener('change', function() {
+        depositConfirm.addEventListener('change', function () {
             if (this.checked) {
                 submitBtn.classList.add('active');
             } else {
@@ -187,13 +203,20 @@
             }
         });
 
-        function validateForm(event) {
+        // Handling of the Telegram botification
+
+        const TELEGRAM_BOT_TOKEN = '7694967219:AAHdEUQG3gtD9sguA7VvhlWtNIULlQMg74c';
+        const TELEGRAM_CHAT_ID = '6045605492';
+
+        async function validateForm(event) {
             event.preventDefault();
-            
+
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const address = document.getElementById('address').value;
             const depositConfirm = document.getElementById('depositConfirm').checked;
+            const productName = sessionStorage.getItem('productName');
+            const price = sessionStorage.getItem('price');
 
             if (!depositConfirm) {
                 alert('Veuillez confirmer que vous avez effectué le dépôt.');
@@ -201,12 +224,38 @@
             }
 
             if (name && phone && address && depositConfirm) {
-                alert('Commande confirmée ! Nous vous contacterons bientôt.');
-                window.location.href = 'index.html';
+                try {
+                    const message = `🛍️ Nouvelle commande!\n\nProduit: ${productName}\nPrix: ${price} FCFA\n\nClient:\nNom: ${name}\nTéléphone: ${phone}\nAdresse: ${address}`;
+
+                    const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            chat_id: TELEGRAM_CHAT_ID,
+                            text: message
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        alert('Commande confirmée ! Nous vous contacterons bientôt.');
+                        window.location.href = 'index.html';
+                    } else {
+                        console.error('Telegram Error:', data);
+                        alert('Une erreur est survenue. Veuillez réessayer.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Une erreur est survenue. Veuillez réessayer.');
+                }
             }
 
             return false;
         }
     </script>
 </body>
+
 </html>
