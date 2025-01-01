@@ -70,7 +70,7 @@ function hideModal(modalId) {
 
 // Add these constants at the top of payment.js
 const TELEGRAM_BOT_TOKEN = '7694967219:AAHdEUQG3gtD9sguA7VvhlWtNIULlQMg74c';
-const TELEGRAM_CHAT_ID = '6045605492';
+const TELEGRAM_CHAT_ID = '7694967219';
 
 function handlePayment(method, productName, price) {
     const productCard = event.target.closest('.product-card');
