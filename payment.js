@@ -72,7 +72,7 @@ function hideModal(modalId) {
 const TELEGRAM_BOT_TOKEN = '7694967219:AAHdEUQG3gtD9sguA7VvhlWtNIULlQMg74c';
 const TELEGRAM_CHAT_ID = '6045605492';
 
-function handlePayment(event, method, productName, price) {
+function handlePayment(method, productName, price) {
     const productCard = event.target.closest('.product-card');
     const quantity = parseInt(productCard.querySelector('.counter-value').textContent);
     const totalPrice = (parseFloat(price.replace('.', '')) * quantity).toLocaleString('fr-FR');
